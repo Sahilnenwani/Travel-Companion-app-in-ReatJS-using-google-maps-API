@@ -9,7 +9,7 @@ import Map from "./Compnents/Map/Map.jsx";
 function App() {
 const [places, setplaces]=useState([]);
 const [cooridnates,setcooridnates] =useState({});
-const [bounds,setbounds] =useState(null);
+const [bounds,setbounds] =useState({});
 
 
 useEffect(() => {
