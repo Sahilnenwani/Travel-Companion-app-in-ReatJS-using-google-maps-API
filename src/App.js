@@ -35,7 +35,7 @@ useEffect(() => {
       <List places={places}/>
       </Grid>
       <Grid item xs={12} md={8}>
-      <Map setcooridnates={setcooridnates} setbounds={setbounds} cooridnates={cooridnates}/>
+      <Map places={places} setcooridnates={setcooridnates} setbounds={setbounds} cooridnates={cooridnates}/>
       </Grid>
 
 
