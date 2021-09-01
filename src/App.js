@@ -9,7 +9,12 @@ import Map from "./Compnents/Map/Map.jsx";
 function App() {
 const [places, setplaces]=useState([]);
 const [cooridnates,setcooridnates] =useState({});
+const [filteredPlaceS, setFilteredPlaceS] = useState([])
 const [bounds,setbounds] =useState({});
+const [childClicked, setchildClicked] = useState(null)
+const [isLoading, setisLoading] = useState(false)
+const [type, settype]=useState('restaurants');
+const [rating, setrating]=useState('restaurants');
 
 
 useEffect(() => {
@@ -17,14 +22,20 @@ useEffect(() => {
   setcooridnates({lat:latitude, lng:longitude })    
   })
 }, [])
+useEffect(() => {
+  const filterdplaces=places.filter((place)=> place.rating > rating)
+  setFilteredPlaceS(filterdplaces)
+}, [rating])
 
 useEffect(() => {
-    
-  getPlacesData(bounds.sw,bounds.ne)
+  setisLoading(true)    
+  getPlacesData(type,bounds.sw,bounds.ne)
     .then((data)=>{
       setplaces(data)
+      setFilteredPlaceS([])
+      setisLoading(false)
     })
-}, [cooridnates,bounds]);
+}, [type,cooridnates,bounds]);
 
   return (
     <>
@@ -32,10 +43,10 @@ useEffect(() => {
     <Header/>
     <Grid container spacing={3} style={{width:'100%'}} >
       <Grid item xs={12} md={4}>
-      <List places={places}/>
+      <List places={filteredPlaceS.length ? filteredPlaceS : places} childClicke={childClicked} isLoading={isLoading} type={type} settype={settype} rating={rating} setrating={setrating} />
       </Grid>
       <Grid item xs={12} md={8}>
-      <Map places={places} setcooridnates={setcooridnates} setbounds={setbounds} cooridnates={cooridnates}/>
+      <Map places={filteredPlaceS.length ? filteredPlaceS : places} setcooridnates={setcooridnates} setbounds={setbounds} cooridnates={cooridnates} setChildClicked={setchildClicked}/>
       </Grid>
 
 
