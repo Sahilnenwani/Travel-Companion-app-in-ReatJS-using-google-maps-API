@@ -1,5 +1,5 @@
 import React from 'react'
-import { Box, Typography, Button, Card, CardMedia, CardContent, CardActions, Chip } from '@material-ui/core';
+import { Box, Typography, Card, CardMedia, CardContent, CardActions, Chip } from '@material-ui/core';
 import LocationOnIcon from '@material-ui/icons/LocationOn';
 import PhoneIcon from '@material-ui/icons/Phone';
 import Rating from '@material-ui/lab/Rating';
@@ -7,7 +7,7 @@ import Rating from '@material-ui/lab/Rating';
 import useStyle from "./style"
 const PlaceDetails = ({place,selected,refprop}) => {
     const classes=useStyle();
-    if(selected) refprop?.current?.scrollIntoView({ behavior:"smooth",block:"start"})
+    if (selected) refprop?.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
     
     return (
         

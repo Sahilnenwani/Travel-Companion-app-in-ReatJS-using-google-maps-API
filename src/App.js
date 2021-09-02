@@ -29,15 +29,15 @@ useEffect(() => {
 
 useEffect(() => {
   if (bounds.sw && bounds.ne) {
-    
-  
   setisLoading(true)    
   getPlacesData(type,bounds.sw,bounds.ne)
     .then((data)=>{
+    
       setplaces(data?.filter((place)=>place.name && place.num_reviews > 0))
       setFilteredPlaceS([])
       setisLoading(false)
-    })}
+    })  
+  }
 }, [type,bounds]);
 
   return (
@@ -46,7 +46,7 @@ useEffect(() => {
     <Header setcooridnates={setcooridnates}/>
     <Grid container spacing={3} style={{width:'100%'}} >
       <Grid item xs={12} md={4}>
-      <List places={filteredPlaceS.length ? filteredPlaceS : places} childClicke={childClicked} isLoading={isLoading} type={type} settype={settype} rating={rating} setrating={setrating} />
+      <List places={filteredPlaceS.length ? filteredPlaceS : places} childClicked={childClicked} isLoading={isLoading} type={type} settype={settype} rating={rating} setrating={setrating} />
       </Grid>
       <Grid item xs={12} md={8}>
       <Map places={filteredPlaceS.length ? filteredPlaceS : places} setcooridnates={setcooridnates} setbounds={setbounds} cooridnates={cooridnates} setChildClicked={setchildClicked}/>

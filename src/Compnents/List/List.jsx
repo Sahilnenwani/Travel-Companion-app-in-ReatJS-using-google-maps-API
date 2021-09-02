@@ -9,11 +9,10 @@ const List = ({places,childClicked,type,settype,rating,setrating,isLoading}) => 
  
     const[elRefs,setElRefs]=useState([])
     
-    // useEffect(() => {
-    //     const placelen=places.length;
-    //     setElRefs((refs) => Array(placelen).fill().map((_, i) => refs[i] || createRef()));
-    // }, [places])
-    
+    useEffect(() => {
+        setElRefs((refs) => Array(places.length).fill().map((_, i) => refs[i] || createRef()));
+      }, [places]);
+     
     return (
         <div className={classes.container}>
             <Typography variant="h4" >Restaurants, Hotels & Attractions arround you</Typography> 

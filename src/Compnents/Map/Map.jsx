@@ -66,11 +66,11 @@ const Map = ({ setcooridnates,setbounds,cooridnates,places,setChildClicked }) =>
           setcooridnates({ lat: e.center.lat, lng: e.center.lng });
           setbounds({ ne: e.marginBounds.ne, sw: e.marginBounds.sw });
         }}
-        onChildClick={(child)=>{setChildClicked(child)}}
+        onChildClick={(child) => setChildClicked(child)}
       >{
         places?.map((place,i)=>(
           <div
-          classsName={classes.markerContainer}
+          className={classes.markerContainer}
           lat={Number(place.latitude)}
           lng={Number(place.longitude)}
           key={i}
